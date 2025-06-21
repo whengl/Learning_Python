@@ -1,0 +1,17 @@
+# Ромб из цифр
+for j in range (1,10):
+    for i in range (10-j):
+        print (" ", end="")
+    for i in range (1,j+1):
+        print (i, end="")
+    for i in range (j-1,0,-1):
+        print (i, end="")
+    print ()
+for k in range (1,9):
+    for i in range (k+1):
+        print (" ", end="")
+    for i in range (1,9-k):
+        print (i, end="")
+    for i in range (9-k,0,-1):
+        print (i, end="")
+    print ()
