@@ -1,0 +1,9 @@
+# Задача на пирамиду из чисел
+for j in range (1,10):
+    for i in range (10-j):
+        print (" ", end="")
+    for i in range (1,j+1):
+        print (i, end="")
+    for i in range (j-1,0,-1):
+        print (i, end="")
+    print ()
