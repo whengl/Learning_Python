@@ -1,5 +1,0 @@
-# Подсчет состава генома
-s=input() 
-i=((s.upper().count("c".upper()))+(s.upper().count("g".upper())))
-z=len(s)
-print (i/z*100)
