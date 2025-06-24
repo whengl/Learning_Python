@@ -1,0 +1,14 @@
+# Задача о выводе чисел в пределах заданного кол-ва.
+# Ввод: целое число
+# Вывод: последовательность чисел в формате 1223334444 длиной не больше заданного числа
+number=int(input())
+j=1
+count=0
+for j in range (1,number+1):
+    for i in range (1,j+1):
+        print (j,end=" ")
+        count+=1
+        if count==number:
+            break
+    if count==number:
+            break
