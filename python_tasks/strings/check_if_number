@@ -1,0 +1,11 @@
+# Сверка строки и числа
+# Ввод: строка и число
+# Вывод: позиция, на которой в списке стоит это число, или слово "отсутствует".
+list=[int(i) for i in input().split()]
+number=int(input())
+if number in list:
+    for position in range (len(list)):
+        if list[position]==number:
+            print (position, end=" ")
+else:
+    print ('Отсутствует')
