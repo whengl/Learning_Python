@@ -1,0 +1,20 @@
+# Задача на замену таблицы другой таблицей
+# Ввод: строки до тех пор, пока не введен  "end"
+# Вывод: таблица, где исходные данные заменены суммой всех рядом расположенных чисел
+table=[]
+while True:
+    row=input()
+    if row=='end': break
+    numbers=[int(x) for x in row.split()]
+    table.append(numbers)
+rows=len(table)
+columns=len(numbers)
+for i in range (rows):
+    for j in range (columns):
+        up=table[i-1][j]
+        right=table[i][(j+1)%columns] # Чтобы крайние числа ссылались на первый столбец и не выходить за пределы таблицы
+        left=table[i][j-1]
+        down=table[(i+1)%rows][j]
+        print (up+right+left+down, end=" ")
+    print ()
+    
