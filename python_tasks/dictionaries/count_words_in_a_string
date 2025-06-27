@@ -1,0 +1,16 @@
+# Написать программу, которая будет считать повторения слов в строчке
+# Ввод: строка со значениями
+# Вывод: пары "слово" - "количество повторений" из заданной строки
+sample=input().lower().split() # обнуляем регистр
+sample.sort()
+words={}
+count=1
+for j in range (len(sample)-1):
+    if sample[j]==sample[j+1]:
+        count+=1
+    else:
+        words [sample[j]]=count
+        count=1
+words [sample[-1]]=count
+for key, value in words.items():
+    print (key,value)
