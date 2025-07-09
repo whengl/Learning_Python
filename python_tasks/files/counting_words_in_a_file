@@ -1,0 +1,19 @@
+# Программа считывает данные из одного файла и выводит наиболее часто используемое слово в другой файл
+# Ввод: файл с данными
+# Вывод: файл с наиболее частым словом
+with open ("E:\\input_8.txt") as info:
+    text=info.read().lower().split()
+    text.sort()
+    words={}
+    count=1
+    for j in range (len(text)-1):
+        if text[j]==text[j+1]:
+            count+=1
+        else:
+            words [text[j]]=count
+            count=1
+    words [text[-1]]=count
+most_common_word = max(words.items(), key=lambda x: x[1])
+output_path = r"E:\output.txt"
+with open(output_path, "w") as out:
+    out.write(f"{most_common_word[0]} {most_common_word[1]}")
