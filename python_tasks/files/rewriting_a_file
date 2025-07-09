@@ -1,0 +1,24 @@
+# Задача на декодирование строки из файла
+# Ввод: файл с данными в формате А2Б15С12
+# Вывод: файл с данными в формате ААБББББББББББББББСССССССССССС
+
+result = ""
+
+with open("dataset_3363_2.txt") as info:
+    data = info.readline().strip()
+    count = ""
+    char = ""
+
+    for symbol in data:
+        if symbol.isalpha():
+            if char and count:
+                result += char * int(count)
+            char = symbol
+            count = ""
+        elif symbol.isdigit():
+            count += symbol
+
+    if char and count:
+        result += char * int(count)
+with open("output.txt", "w") as out:
+    out.write(result)
