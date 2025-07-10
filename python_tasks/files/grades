@@ -1,0 +1,28 @@
+# Написать программу, которая будет считывать данные из файла в виде "Петров, 34, 36, 45" - в виде фамилии и оценки по 3 предметам. И выводить результат в другой файл в виде средних оценок
+# Ввод: файл с фамилией и 3 оценками
+# Вывод: файл со средними оценками по ученику, в котором в последней строке также выведены средние по предмету 
+with open("file.txt", "r") as file:
+    marks = [line.strip() for line in file]
+    marks_by_student = [marks[i:i+4] for i in range(0, len(marks), 4)]
+    average_marks=[] 
+    avg=0
+    maths_total=0
+    physics_total=0
+    English_total=0
+    for j in range (len(marks_by_student)):
+        avg=(int(marks_by_student[j][1]) + int(marks_by_student[j][2]) + int(marks_by_student[j][3]))/3 # Считаем среднюю по ученику
+        average_marks.append(avg)
+        maths_total+=int(marks_by_student[j][1])
+        physics_total+=int(marks_by_student[j][2])
+        English_total+=int(marks_by_student[j][3])
+    maths_avg=maths_total/len(marks_by_student)
+    average_marks.append(maths_avg)
+    physics_avg=physics_total/len(marks_by_student) 
+    average_marks.append(physics_avg)
+    English_avg=English_total/len(marks_by_student)
+    average_marks.append(English_avg)
+with open("result.txt", "w") as output_file: # Записываем результат
+    for avg in average_marks[:-3]:
+        output_file.write(str(avg) + '\n')
+    subject_avgs = average_marks[-3:]
+    output_file.write(' '.join(map(str, subject_avgs)))
