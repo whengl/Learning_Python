@@ -1,0 +1,17 @@
+# Программа на шифрование и дешифровку короткого сообщения
+# Ввод: 4 строки, где первыми двумя задается шифр. 3 и 4 - строки для шифрования и дешифрования
+# Вывод: 2 строки. Зашифрованная и дешифрованная
+letters=[input() for strings in range(4)]
+code={}
+n=0
+for letter in letters[0]:
+    if letter not in code:
+        code[letter]=letters[1][n]
+        n+=1
+for symbol in letters[2]:
+    print (code[symbol], end='')
+print()
+n=0
+reversed_code={value:key for key,value in code.items()}
+for symbol in letters[3]:
+    print (reversed_code[symbol], end='')
