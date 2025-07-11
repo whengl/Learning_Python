@@ -1,0 +1,28 @@
+# Программа составляет таблицу по результатам игр
+# Ввод: результаты матчей в формате: "Кол-во игр;Команда1;Голы1;Команда2;Голы2".
+# Вывод: таблица в формате: "Команда, кол-во игр, побед, ничьих, поражений, очков"
+results=input().split()
+matches=[match.split(";") for match in results[1:]]
+table={}
+for match in matches:
+    team1, score1, team2, score2 = match[0], int(match[1]), match [2], int(match[3])
+    for team in [team1, team2]:
+        if team not in table:
+            table[team]=[0,0,0,0,0] # матчи, победы, ничьи, поражения, очки
+    table[team1][0]+=1
+    table[team2][0]+=1
+    if score1>score2:
+        table[team1][1]+=1
+        table[team2][3]+=1
+        table[team1][4]+=3
+    elif score1==score2:
+        table[team1][2]+=1
+        table[team2][2]+=1
+        table[team1][4]+=1
+        table[team2][4]+=1
+    elif score1<score2:
+        table[team1][3]+=1
+        table[team2][1]+=1
+        table[team2][4]+=3
+for team, stats in table.items():
+    print (f"{team}:"+" ".join(str(s) for s in stats))
